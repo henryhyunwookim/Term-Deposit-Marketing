@@ -37,4 +37,3 @@ The data comes from direct marketing efforts of a European banking institution. 
 - What makes the customers buy? Tell us which feature we should be focusing more on.
 
 ##### Source: Apziva
-##### Mentor: Chaitra Latha
