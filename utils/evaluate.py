@@ -23,6 +23,7 @@ from sklearn.pipeline import make_pipeline
 import pandas as pd
 import numpy as np
 import time
+import operator
 
 # Custom function
 from utils.plot import plot_scores
@@ -216,3 +217,11 @@ from utils.plot import plot_scores
 #     print(f"n_iter: {n_iter}, cv: {cv}, best_score: {round(best_search.best_score_, 2)}, test_score: {round(score, 2)}")
     
 #     return best_search
+
+
+def get_sorted_dict(keys, values):
+    feature_importance_dict = {}
+    for feature, importance in zip(keys, values):
+        feature_importance_dict[feature] = importance
+
+    return sorted(feature_importance_dict.items(), key=operator.itemgetter(1), reverse=True)

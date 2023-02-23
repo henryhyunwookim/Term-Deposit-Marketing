@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
@@ -37,3 +38,24 @@ def normalize_data(X_train, X_test, method="standard"):
     X_test_normalized = scaler.transform(X_test)
 
     return X_train_normalized, X_test_normalized
+
+
+def numeric_to_interval(data, column, n_intervals):
+    col_vals = data[column]
+    min_val = np.min(col_vals)
+    max_val = np.max(col_vals)
+    interval = (max_val - min_val) / n_intervals
+    data[column] = pd.cut(col_vals, bins=np.arange(min_val, max_val, interval), right=True)
+    
+    return data
+
+
+def concat_counts_df(df1, df1_name, df2, df2_name, column):
+    counts_df1 = df1[column].value_counts(sort=False)
+    counts_df1.name = f"{df1_name}_{column}"
+    counts_df2 = df2[column].value_counts(sort=False)
+    counts_df2.name = f"{df2_name}_{column}"
+    return pd.concat([
+        pd.DataFrame(counts_df1/ sum(counts_df1)).T,
+        pd.DataFrame(counts_df2/ sum(counts_df2)).T
+        ]).round(2)
