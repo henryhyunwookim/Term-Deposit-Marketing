@@ -220,8 +220,20 @@ from utils.plot import plot_scores
 
 
 def get_sorted_dict(keys, values):
-    feature_importance_dict = {}
-    for feature, importance in zip(keys, values):
-        feature_importance_dict[feature] = importance
+    sorted_dict = {}
+    for k, v in zip(keys, values):
+        sorted_dict[k] = v
 
-    return sorted(feature_importance_dict.items(), key=operator.itemgetter(1), reverse=True)
+    return dict(sorted(sorted_dict.items(), key=operator.itemgetter(1), reverse=True))
+
+
+def group_items(_dict, group_keys):
+    grouped_dict = {}
+    for group_key in group_keys:
+        for k, v in _dict.items():
+            if group_key in k:
+                if group_key in grouped_dict:
+                    grouped_dict[group_key] += v
+                else:
+                    grouped_dict[group_key] = v
+    return dict(sorted(grouped_dict.items(), key=operator.itemgetter(1), reverse=True))
