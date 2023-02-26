@@ -59,3 +59,15 @@ def concat_counts_df(df1, df1_name, df2, df2_name, column):
         pd.DataFrame(counts_df1/ sum(counts_df1)).T,
         pd.DataFrame(counts_df2/ sum(counts_df2)).T
         ]).round(2)
+
+
+def get_numeric_columns(data, cols_to_exclude=None):
+    numeric_columns = []
+    non_numeric_columns = []
+    for col in data.drop(cols_to_exclude, axis=1).columns:
+        if type(data[col][0]) == str:
+            non_numeric_columns.append(col)
+        else:
+            numeric_columns.append(col)
+
+    return numeric_columns, non_numeric_columns
