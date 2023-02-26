@@ -79,6 +79,10 @@ def plot_timeseries(data, time_variable, group_col, group_vals, figsize,
             to_plot.plot(ax=ax[0])
     ax[0].set_title(f"Value counts of {group_col} for each {time_variable}")
 
-    sns.lineplot(count_dfs[0][group_vals[0]].values / count_dfs[1][group_vals[1]].values, ax=ax[1])
+    ratios = count_dfs[0][group_vals[0]].values / count_dfs[1][group_vals[1]].values
+    indices = count_dfs[0].index
+    sns.lineplot(
+        dict(zip(indices, ratios)),
+        ax=ax[1])
     ax[1].set_title(f"{class_names[0]} to {class_names[1]} ratio for each {time_variable}")
     plt.tight_layout(pad=3);
