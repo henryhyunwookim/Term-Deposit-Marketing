@@ -36,4 +36,10 @@ The data comes from direct marketing efforts of a European banking institution. 
 - We are also interested in finding customers who are more likely to buy the investment product. Determine the segment(s) of customers our client should prioritize.
 - What makes the customers buy? Tell us which feature we should be focusing more on.
 
+### <b>Notebook and Installation</b>
+
+To run Term Deposit Marketing.ipynb locally, please clone or fork this repo and install the required packages by running the following command:
+
+pip install -r requirements.txt
+
 ##### Source: Apziva
