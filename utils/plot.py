@@ -1,4 +1,5 @@
 import numpy as np
+import operator
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -58,6 +59,19 @@ def plot_bars(data, ax, stacked=True):
     for c in ax.containers:
         ax.bar_label(c, label_type='center')
     ax.legend(loc='lower center');
+
+
+def plot_pies(values, labels, ax, title, autopct='%1.1f%%', startangle=90, sort_values=True, sort_reverse=False):
+    if sort_values:
+        sorted_dict = dict(sorted(zip(labels, values), key=operator.itemgetter(1), reverse=sort_reverse))
+        values = sorted_dict.values()
+        labels = sorted_dict.keys()
+
+    ax.pie(values,
+           labels=labels,
+           autopct=autopct,
+           startangle=startangle)
+    ax.set_title(title);
 
 
 def plot_timeseries(data, time_variable, group_col, group_vals, figsize,
