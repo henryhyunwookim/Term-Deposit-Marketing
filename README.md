@@ -32,7 +32,7 @@ The data comes from direct marketing efforts of a European banking institution. 
 
 ### <b>Objectives</b>
 - Predict if the customer will subscribe (yes/no) to a term deposit (variable y).
-- Hit %81 or above accuracy by evaluating with 5-fold cross validation and reporting the average performance score.
+- Hit 81% or above accuracy by evaluating with 5-fold cross validation and reporting the average performance score.
 - We are also interested in finding customers who are more likely to buy the investment product. Determine the segment(s) of customers our client should prioritize.
 - What makes the customers buy? Tell us which feature we should be focusing more on.
 
